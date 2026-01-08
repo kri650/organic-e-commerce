@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover pure, chemical-free herbal wellness products. Premium organic personal care made with traditional ingredients for natural beauty and health.">
+    <meta name="keywords" content="herbal products, organic wellness, natural skincare, chemical-free, eco-friendly, ayurvedic, herbal hair oil, neem soap">
+    <title>PureHerbal - Natural Organic Wellness & Personal Care</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Promotional Banner -->
+    <div class="promo-banner">
+        <div class="promo-content">
+            <span class="promo-text">🎉 Get 20% OFF on your first order! Use code: FIRST20</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <ul class="nav-menu nav-left" id="navMenuLeft">
+                        <li><a href="index.html" class="nav-link active">Home</a></li>
+                        <li class="dropdown mega-dropdown">
+                            <a href="products.html" class="nav-link">Shop <span class="dropdown-arrow">▼</span></a>
+                            <div class="mega-menu">
+                                <div class="mega-menu-content">
+                                    <div class="mega-menu-section">
+                                        <h3>Shop Types</h3>
+                                        <ul>
+                                            <li><a href="products.html?layout=grid">Product Grid</a></li>
+                                            <li><a href="products.html?layout=list">Product List</a></li>
+                                            <li><a href="products.html?layout=slider">Product Slider</a></li>
+                                            <li><a href="products.html?filter=bestseller">Best Sellers</a></li>
+                                            <li><a href="products.html?filter=new">New Arrivals</a></li>
+                                            <li><a href="products.html?filter=sale">On Sale</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-menu-section">
+                                        <h3>Product Types</h3>
+                                        <ul>
+                                            <li><a href="products.html?category=hair">Hair Care</a></li>
+                                            <li><a href="products.html?category=body">Body Care</a></li>
+                                            <li><a href="products.html?category=skin">Skin Care</a></li>
+                                            <li><a href="products.html?category=face">Face Care</a></li>
+                                            <li><a href="products.html?category=essential">Essential Oils</a></li>
+                                            <li><a href="products.html?category=combo">Combo Packs</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-menu-section">
+                                        <h3>Shop Pages</h3>
+                                        <ul>
+                                            <li><a href="account.html">My Account</a></li>
+                                            <li><a href="cart.html">Shopping Cart</a></li>
+                                            <li><a href="cart.html?view=checkout">Checkout</a></li>
+                                            <li><a href="account.html?view=wishlist">Wishlist</a></li>
+                                            <li><a href="account.html?view=orders">Order Tracking</a></li>
+                                            <li><a href="account.html?view=compare">Compare Products</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="mega-menu-section">
+                                        <h3>Resources</h3>
+                                        <ul>
+                                            <li><a href="about.html#lab-reports">Lab Reports</a></li>
+                                            <li><a href="faq.html">FAQ</a></li>
+                                            <li><a href="about.html#certifications">Certifications</a></li>
+                                            <li><a href="about.html#ingredients">Ingredient Guide</a></li>
+                                            <li><a href="about.html#sustainability">Sustainability</a></li>
+                                            <li><a href="faq.html#shipping">Shipping Info</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                    </ul>
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="NaturaLife Logo" class="logo-img">
+                    </a>
+                    <div class="nav-right-wrapper">
+                        <ul class="nav-menu nav-right" id="navMenuRight">
+                            <li><a href="lab-reports.html" class="nav-link">Lab Reports</a></li>
+                            <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                            <li><a href="account.html" class="nav-link">My Account</a></li>
+                        </ul>
+                        <div class="nav-icons">
+                            <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping Cart">
+                                <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 2H4L6 14H16L18 6H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="7" cy="18" r="1" fill="currentColor"/>
+                                    <circle cx="15" cy="18" r="1" fill="currentColor"/>
+                                </svg>
+                                <span class="cart-count">0</span>
+                            </a>
+                            <button class="icon-btn search-btn" aria-label="Search">
+                                <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Categories -->
+    <section class="hero-categories">
+        <div class="container">
+            <div class="categories-grid">
+                <div class="category-card">
+                    <img src="https://images.pexels.com/photos/17466173/pexels-photo-17466173.jpeg" alt="Hair Care" class="category-image">
+                    <div class="category-overlay">
+                        <h2 class="category-title">Hair Care</h2>
+                        <p class="category-subtitle">Organic</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.pexels.com/photos/34946660/pexels-photo-34946660.jpeg" alt="Skin Care" class="category-image">
+                    <div class="category-overlay">
+                        <h2 class="category-title">Skin Care</h2>
+                        <p class="category-subtitle">Natural</p>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.pexels.com/photos/16399977/pexels-photo-16399977.jpeg?_gl=1*99rz0w*_ga*MTY5NzA3MzQ2OS4xNzYyNDIzMTQ1*_ga_8JE65Q40S6*czE3Njc4MTYyODMkbzUkZzEkdDE3Njc4MTcyMTUkajIxJGwwJGgw" alt="Body Care" class="category-image">
+                    <div class="category-overlay">
+                        <h2 class="category-title">Body Care</h2>
+                        <p class="category-subtitle">Fresh</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Lavender Flower -->
+    <div class="floating-lavender">
+        <img src="images/vecteezy_elegant-flower-with-a-yellow-center-isolated-against-a_59588614.png" alt="Lavender Decoration" class="lavender-img">
+    </div>
+
+    <!-- All Organic Products Section -->
+    <section class="organic-products">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">All-organic products</h2>
+            </div>
+            
+            <div class="features-grid-modern">
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" fill="#E8F5E9"/>
+                            <path d="M30 15C25 15 22 20 22 25C22 28 23 30 25 32C23 33 20 35 20 40C20 43 22 45 25 45C28 45 30 43 32 40C33 42 35 45 38 45C41 45 43 43 43 40C43 35 40 33 38 32C40 30 41 28 41 25C41 20 38 15 33 15" stroke="#4A9B4F" stroke-width="2.5"/>
+                            <circle cx="30" cy="20" r="2.5" fill="#4A9B4F"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title-modern">100% Natural</h3>
+                    <p class="feature-description-modern">Pure herbal ingredients sourced from organic farms</p>
+                </div>
+                
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" fill="#E8F5E9"/>
+                            <path d="M20 30L27 37L40 22" stroke="#4A9B4F" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title-modern">Chemical-Free</h3>
+                    <p class="feature-description-modern">No harmful additives or synthetic ingredients</p>
+                </div>
+                
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" fill="#E8F5E9"/>
+                            <circle cx="30" cy="30" r="15" stroke="#4A9B4F" stroke-width="2.5"/>
+                            <path d="M30 18V30L37 33" stroke="#4A9B4F" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title-modern">Traditional</h3>
+                    <p class="feature-description-modern">Time-tested recipes passed through generations</p>
+                </div>
+                
+                <div class="feature-card-modern">
+                    <div class="feature-icon-modern">
+                        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="30" cy="30" r="28" fill="#E8F5E9"/>
+                            <circle cx="30" cy="30" r="15" stroke="#4A9B4F" stroke-width="2.5"/>
+                            <path d="M25 30C25 30 27 25 30 25C33 25 35 30 35 30C35 30 33 35 30 35C27 35 25 30 25 30Z" fill="#4A9B4F"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title-modern">Eco-Friendly</h3>
+                    <p class="feature-description-modern">Sustainable packaging and ethical sourcing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Showcase Section -->
+    <section class="product-showcase">
+        <div class="vertical-text">NEW PRODUCTS</div>
+        <div class="container">
+            <div class="showcase-content">
+                <div class="showcase-text">
+                    <p class="showcase-tagline">organic is good for your health</p>
+                    <h2 class="showcase-title">How Our Natural Products Help You Feel Better After Regular Usage?</h2>
+                    <p class="showcase-description">
+                        Our carefully crafted organic formulations combine ancient herbal wisdom with modern science. 
+                        Each product is designed to nourish your skin and hair naturally, promoting long-term health 
+                        and vitality. Experience the transformation with pure, chemical-free ingredients that work 
+                        in harmony with your body.
+                    </p>
+                    <a href="#products" class="btn-primary">
+                        <span>Explore Products</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 4L13 10L7 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+                <div class="showcase-visual">
+                    <img src="images/vecteezy_ai-generated-a-jar-of-cream-on-a-transparent-background_36527008.png" alt="Natural Product" class="showcase-bottle">
+                    <img src="images/vecteezy_green-leaf-isolated-on-transparent-background-for-design_18746974.png" alt="Organic Leaf" class="showcase-leaf">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header-center">
+                <h2 class="section-title">All-organic products</h2>
+                <p class="section-subtitle">Discover our collection of natural wellness products crafted with care</p>
+            </div>
+            
+            <div class="products-grid-showcase">
+                <!-- Single Feature Image that changes -->
+                <div class="feature-images-container">
+                    <div class="product-feature-large feature-image-item active">
+                        <img src="https://images.pexels.com/photos/5308631/pexels-photo-5308631.jpeg" alt="Natural Wellness">
+                        <div class="product-feature-overlay">
+                            <h3>Natural Wellness</h3>
+                            <p>100% Organic</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Cards Grid -->
+                <div class="products-grid-small">
+                    <div class="product-card-small product-animate" style="animation-delay: 0.2s;">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/15569181/pexels-photo-15569181.jpeg" alt="Product 1">
+                            <button class="add-to-cart-btn" onclick="addToCart('Lavender Hair Oil', 15.00)">Add to cart</button>
+                        </div>
+                        <div class="product-info-small">
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star-empty">★</span>
+                            </div>
+                            <h4 class="product-name-small">Lavender Hair Oil</h4>
+                            <p class="product-price-small">$15.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card-small product-animate" style="animation-delay: 0.4s;">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/13516802/pexels-photo-13516802.jpeg" alt="Product 2">
+                            <button class="add-to-cart-btn" onclick="addToCart('Rose Face Cream', 18.00)">Add to cart</button>
+                        </div>
+                        <div class="product-info-small">
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <h4 class="product-name-small">Rose Face Cream</h4>
+                            <p class="product-price-small">$18.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card-small product-animate" style="animation-delay: 0.6s;">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/32565193/pexels-photo-32565193.jpeg" alt="Product 3">
+                            <button class="add-to-cart-btn" onclick="addToCart('Herbal Body Lotion', 16.00)">Add to cart</button>
+                        </div>
+                        <div class="product-info-small">
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star-empty">★</span>
+                            </div>
+                            <h4 class="product-name-small">Herbal Body Lotion</h4>
+                            <p class="product-price-small">$16.00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card-small product-animate" style="animation-delay: 0.8s;">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.pexels.com/photos/14473395/pexels-photo-14473395.jpeg" alt="Product 4">
+                            <button class="add-to-cart-btn" onclick="addToCart('Aloe Vera Gel', 12.00)">Add to cart</button>
+                        </div>
+                        <div class="product-info-small">
+                            <div class="product-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star-empty">★</span>
+                            </div>
+                            <h4 class="product-name-small">Aloe Vera Gel</h4>
+                            <p class="product-price-small">$12.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features" style="display: none;">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="20" fill="#E8F3E0"/>
+                            <path d="M24 10C20 10 18 14 18 18C18 21 19 23 21 25C19 26 16 28 16 33C16 36 18 38 21 38C24 38 26 36 28 33C29 35 31 38 34 38C37 38 39 36 39 33C39 28 36 26 34 25C36 23 37 21 37 18C37 14 34 10 29 10" stroke="#2D5016" stroke-width="2"/>
+                            <circle cx="24" cy="16" r="2" fill="#6B9F3E"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">100% Natural</h3>
+                    <p class="feature-description">Pure herbal ingredients sourced from organic farms</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="20" fill="#E8F3E0"/>
+                            <path d="M16 24L22 30L32 18" stroke="#2D5016" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Chemical-Free</h3>
+                    <p class="feature-description">No harmful additives or synthetic ingredients</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="20" fill="#E8F3E0"/>
+                            <circle cx="24" cy="24" r="12" stroke="#2D5016" stroke-width="2"/>
+                            <path d="M24 14V24L30 27" stroke="#6B9F3E" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Traditional</h3>
+                    <p class="feature-description">Time-tested recipes passed through generations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="20" fill="#E8F3E0"/>
+                            <path d="M24 12C18 12 12 18 12 24C12 30 18 36 24 36C30 36 36 30 36 24C36 18 30 12 24 12Z" stroke="#2D5016" stroke-width="2"/>
+                            <path d="M20 24C20 24 22 20 24 20C26 20 28 24 28 24C28 24 26 28 24 28C22 28 20 24 20 24Z" fill="#6B9F3E"/>
+                        </svg>
+                    </div>
+                    <h3 class="feature-title">Eco-Friendly</h3>
+                    <p class="feature-description">Sustainable packaging and ethical sourcing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Popular Products</span>
+                <h2 class="section-title">Nature's Best Sellers</h2>
+                <p class="section-description">Discover our most loved herbal wellness products</p>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="80" ry="15" fill="#E8F3E0" opacity="0.6"/>
+                            <!-- Oil Bottle -->
+                            <rect x="110" y="90" width="80" height="130" rx="40" fill="#FFF8E7"/>
+                            <rect x="130" y="70" width="40" height="25" rx="4" fill="#D4A574"/>
+                            <ellipse cx="150" cy="82" rx="15" ry="6" fill="#8B6914"/>
+                            <rect x="120" y="130" width="60" height="50" rx="6" fill="#FFE4B5" opacity="0.8"/>
+                            <text x="150" y="155" font-family="Arial" font-size="10" fill="#8B6914" text-anchor="middle" font-weight="bold">HERBAL</text>
+                            <text x="150" y="168" font-family="Arial" font-size="8" fill="#8B6914" text-anchor="middle">Hair Oil</text>
+                            <!-- Decorative herbs -->
+                            <path d="M80 140C80 140 70 150 75 165" stroke="#6B9F3E" stroke-width="2" fill="none"/>
+                            <circle cx="75" cy="145" r="5" fill="#8BC34A" opacity="0.7"/>
+                            <path d="M220 160C220 160 230 170 225 185" stroke="#6B9F3E" stroke-width="2" fill="none"/>
+                            <circle cx="225" cy="165" r="5" fill="#8BC34A" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Herbal Hair Oil</h3>
+                        <p class="product-description">Nourishing blend of 15 herbs for strong, lustrous hair</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(245 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$24.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Herbal Hair Oil', 24.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge new">New</div>
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="70" ry="12" fill="#E8F3E0" opacity="0.6"/>
+                            <!-- Jar -->
+                            <ellipse cx="150" cy="100" rx="60" ry="15" fill="#C8E6C9"/>
+                            <rect x="90" y="100" width="120" height="100" fill="#E8F5E9"/>
+                            <ellipse cx="150" cy="200" rx="60" ry="15" fill="#A5D6A7"/>
+                            <rect x="130" y="75" width="40" height="30" rx="5" fill="#81C784"/>
+                            <ellipse cx="150" cy="90" rx="15" ry="6" fill="#66BB6A"/>
+                            <!-- Label -->
+                            <rect x="110" y="130" width="80" height="45" rx="6" fill="white" opacity="0.9"/>
+                            <text x="150" y="150" font-family="Arial" font-size="12" fill="#2D5016" text-anchor="middle" font-weight="bold">ALOE</text>
+                            <text x="150" y="165" font-family="Arial" font-size="9" fill="#2D5016" text-anchor="middle">VERA GEL</text>
+                            <!-- Aloe leaves -->
+                            <path d="M60 170L50 200L60 195Z" fill="#66BB6A"/>
+                            <path d="M240 180L250 210L240 205Z" fill="#66BB6A"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Aloe Vera Gel</h3>
+                        <p class="product-description">Pure 99% aloe extract for skin hydration & healing</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(189 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$18.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Aloe Vera Gel', 18.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="260" rx="75" ry="15" fill="#E8F3E0" opacity="0.6"/>
+                            <!-- Shampoo Bottle -->
+                            <path d="M110 110C110 100 120 90 150 90C180 90 190 100 190 110V220C190 230 180 240 150 240C120 240 110 230 110 220V110Z" fill="#E3F2FD"/>
+                            <rect x="135" y="70" width="30" height="25" rx="3" fill="#90CAF9"/>
+                            <ellipse cx="150" cy="82" rx="12" ry="5" fill="#42A5F5"/>
+                            <rect x="120" y="140" width="60" height="55" rx="8" fill="white" opacity="0.85"/>
+                            <text x="150" y="160" font-family="Arial" font-size="10" fill="#1565C0" text-anchor="middle" font-weight="bold">HERBAL</text>
+                            <text x="150" y="173" font-family="Arial" font-size="9" fill="#1565C0" text-anchor="middle">Shampoo</text>
+                            <text x="150" y="185" font-family="Arial" font-size="7" fill="#1565C0" text-anchor="middle">Natural Care</text>
+                            <!-- Bubbles -->
+                            <circle cx="75" cy="160" r="8" fill="#E3F2FD" opacity="0.7"/>
+                            <circle cx="85" cy="180" r="6" fill="#E3F2FD" opacity="0.7"/>
+                            <circle cx="225" cy="170" r="10" fill="#E3F2FD" opacity="0.7"/>
+                            <circle cx="215" cy="195" r="7" fill="#E3F2FD" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Herbal Shampoo</h3>
+                        <p class="product-description">Gentle cleansing with natural herbs & essential oils</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(156 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$16.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Herbal Shampoo', 16.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="60" ry="12" fill="#E8F3E0" opacity="0.6"/>
+                            <!-- Soap Bar -->
+                            <rect x="90" y="110" width="120" height="90" rx="12" fill="#C8E6C9" opacity="0.9"/>
+                            <rect x="95" y="115" width="110" height="80" rx="10" fill="#A5D6A7"/>
+                            <path d="M100 150H200M100 165H200M100 180H200" stroke="#66BB6A" stroke-width="2" opacity="0.4"/>
+                            <text x="150" y="155" font-family="Arial" font-size="14" fill="#2D5016" text-anchor="middle" font-weight="bold">NEEM</text>
+                            <text x="150" y="173" font-family="Arial" font-size="10" fill="#2D5016" text-anchor="middle">Natural Soap</text>
+                            <!-- Neem leaves -->
+                            <ellipse cx="70" cy="130" rx="12" ry="25" fill="#81C784" opacity="0.6"/>
+                            <ellipse cx="65" cy="135" rx="10" ry="20" fill="#66BB6A" opacity="0.6"/>
+                            <ellipse cx="230" cy="140" rx="12" ry="25" fill="#81C784" opacity="0.6"/>
+                            <ellipse cx="235" cy="145" rx="10" ry="20" fill="#66BB6A" opacity="0.6"/>
+                            <!-- Bubbles -->
+                            <circle cx="180" cy="220" r="15" fill="white" opacity="0.6"/>
+                            <circle cx="195" cy="230" r="10" fill="white" opacity="0.6"/>
+                            <circle cx="120" cy="225" r="12" fill="white" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Neem Soap</h3>
+                        <p class="product-description">Antibacterial neem soap for clear, healthy skin</p>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(312 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$8.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Neem Soap', 8.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-cta">
+                <a href="products.html" class="btn btn-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <!-- Vertical Text -->
+        <div class="vertical-text-left">WHY CHOOSE US</div>
+        
+        <div class="container">
+            <!-- Decorative flower -->
+            <div class="decorative-flower">
+                <img src="images/vecteezy_elegant-flower-with-a-yellow-center-isolated-against-a_59588614.png" alt="Decorative Flower">
+            </div>
+            
+            <div class="section-header-center">
+                <h2 class="section-title-dark">Why Choose Us</h2>
+                <div class="title-underline"></div>
+                <p class="section-subtitle-gray">There are many variations of passages of lorem ipsum available, but the majority have suffered<br>alteration in some form, by injected humour.</p>
+            </div>
+
+            <div class="why-choose-grid">
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="35" cy="25" r="15" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <path d="M28 25C28 25 30 20 35 20C40 20 42 25 42 25" stroke="#8BC34A" stroke-width="2.5" stroke-linecap="round"/>
+                            <ellipse cx="35" cy="23" rx="3" ry="1.5" fill="#8BC34A"/>
+                            <path d="M25 38C25 38 27 35 30 35H40C43 35 45 38 45 38V52C45 54 43 55 41 55H29C27 55 25 54 25 52V38Z" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <circle cx="32" cy="45" r="2" fill="#8BC34A"/>
+                            <circle cx="38" cy="45" r="2" fill="#8BC34A"/>
+                        </svg>
+                    </div>
+                    <h3>100% Organic Products</h3>
+                    <p>Duis aute irure dolor in reprehenderit voluptate velit esse seds cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30 15L35 25L45 27L37 35L39 45L30 40L21 45L23 35L15 27L25 25L30 15Z" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <path d="M30 15L35 25L45 27L37 35" stroke="#8BC34A" stroke-width="2.5"/>
+                            <rect x="25" y="48" width="10" height="15" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <path d="M20 63H40" stroke="#8BC34A" stroke-width="2.5" stroke-linecap="round"/>
+                            <circle cx="50" cy="20" r="3" stroke="#8BC34A" stroke-width="2"/>
+                            <circle cx="52" cy="35" r="2" stroke="#8BC34A" stroke-width="2"/>
+                            <circle cx="15" cy="50" r="2.5" stroke="#8BC34A" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3>Any Time, Anywhere Delivery</h3>
+                    <p>Duis aute irure dolor in reprehenderit voluptate velit esse seds cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M35 15C30 15 27 18 27 22C27 25 29 27 31 29C29 30 26 32 26 36C26 40 29 42 32 42C35 42 37 40 39 37C40 39 42 42 45 42C48 42 50 40 50 36C50 32 47 30 45 29C47 27 48 25 48 22C48 18 45 15 40 15" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <circle cx="35" cy="20" r="2" fill="#8BC34A"/>
+                            <path d="M22 48C22 48 25 45 30 45H40C45 45 48 48 48 48V58C48 60 46 62 43 62H27C24 62 22 60 22 58V48Z" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <path d="M30 52H40M30 56H40" stroke="#8BC34A" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Keeps Your Family Healthy</h3>
+                    <p>Duis aute irure dolor in reprehenderit voluptate velit esse seds cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">
+                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="15" y="25" width="40" height="35" rx="4" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <path d="M25 25V20C25 17 27 15 30 15H40C43 15 45 17 45 20V25" stroke="#8BC34A" stroke-width="2.5"/>
+                            <circle cx="35" cy="40" r="6" stroke="#8BC34A" stroke-width="2.5" fill="none"/>
+                            <path d="M32 40L34 42L38 38" stroke="#8BC34A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M20 30H50" stroke="#8BC34A" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Clean, Fresh and Safety</h3>
+                    <p>Duis aute irure dolor in reprehenderit voluptate velit esse seds cillum dolore eu fugiat nulla pariatur excepteur sint occaecat.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <!-- Vertical Text -->
+        <div class="vertical-text-left">TESTIMONIALS</div>
+        
+        <div class="container">
+            <div class="testimonials-wrapper">
+                <!-- Navigation Arrow Left -->
+                <button class="testimonial-nav testimonial-prev" onclick="moveTestimonialSlide(-1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                <!-- Testimonials Slider -->
+                <div class="testimonials-slider">
+                    <div class="testimonial-slide active">
+                        <div class="quote-icon">
+                            <svg width="60" height="45" viewBox="0 0 60 45" fill="none">
+                                <path d="M0 45V22.5C0 10.125 5.625 0 18.75 0V7.5C11.25 7.5 7.5 13.125 7.5 22.5H18.75V45H0Z" fill="#C8E6C9"/>
+                                <path d="M26.25 45V22.5C26.25 10.125 31.875 0 45 0V7.5C37.5 7.5 33.75 13.125 33.75 22.5H45V45H26.25Z" fill="#C8E6C9"/>
+                            </svg>
+                        </div>
+                        <h3 class="testimonial-title">PureHerbal is the Best!</h3>
+                        <p class="testimonial-text">Nam orci orci, pretium vel elementum eu, vestibulum at sapien. Sed pretium turpis lacus, ut vehicula odio tempor non. Duis fermentum massa sed laoreet suscipit. Mauris sed semper urna, a facilisis elit.</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=5" alt="Jane Travis" class="author-photo">
+                            <div class="author-info">
+                                <div class="author-name">Jane Travis</div>
+                                <div class="author-title">Writer</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="quote-icon">
+                            <svg width="60" height="45" viewBox="0 0 60 45" fill="none">
+                                <path d="M0 45V22.5C0 10.125 5.625 0 18.75 0V7.5C11.25 7.5 7.5 13.125 7.5 22.5H18.75V45H0Z" fill="#C8E6C9"/>
+                                <path d="M26.25 45V22.5C26.25 10.125 31.875 0 45 0V7.5C37.5 7.5 33.75 13.125 33.75 22.5H45V45H26.25Z" fill="#C8E6C9"/>
+                            </svg>
+                        </div>
+                        <h3 class="testimonial-title">100% Recommended</h3>
+                        <p class="testimonial-text">Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=12" alt="Larry Wilson" class="author-photo">
+                            <div class="author-info">
+                                <div class="author-name">Larry Wilson</div>
+                                <div class="author-title">Journalist</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-slide">
+                        <div class="quote-icon">
+                            <svg width="60" height="45" viewBox="0 0 60 45" fill="none">
+                                <path d="M0 45V22.5C0 10.125 5.625 0 18.75 0V7.5C11.25 7.5 7.5 13.125 7.5 22.5H18.75V45H0Z" fill="#C8E6C9"/>
+                                <path d="M26.25 45V22.5C26.25 10.125 31.875 0 45 0V7.5C37.5 7.5 33.75 13.125 33.75 22.5H45V45H26.25Z" fill="#C8E6C9"/>
+                            </svg>
+                        </div>
+                        <h3 class="testimonial-title">Amazing Organic Products!</h3>
+                        <p class="testimonial-text">The herbal hair oil transformed my dry, damaged hair. It's now shinier and healthier than ever. Love that it's 100% natural and eco-friendly packaging.</p>
+                        <div class="testimonial-author">
+                            <img src="https://i.pravatar.cc/80?img=9" alt="Sarah Martinez" class="author-photo">
+                            <div class="author-info">
+                                <div class="author-name">Sarah Martinez</div>
+                                <div class="author-title">Wellness Blogger</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Arrow Right -->
+                <button class="testimonial-nav testimonial-next" onclick="moveTestimonialSlide(1)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted Brands Section -->
+    <section class="trusted-brands">
+        <!-- Vertical Text -->
+        <div class="vertical-text-left">OUR CLIENTS</div>
+        
+        <div class="container">
+            <div class="trusted-brands-content">
+                <div class="trusted-brands-header">
+                    <h2 class="section-title-dark">Trusted by Leading Wellness Retailers</h2>
+                    <svg class="title-decoration" width="100" height="8" viewBox="0 0 100 8" fill="none">
+                        <path d="M0 4C10 2 15 0 25 2C35 4 40 6 50 4C60 2 65 0 75 2C85 4 90 6 100 4" stroke="#6B9F3E" stroke-width="2"/>
+                    </svg>
+                    <p class="trusted-brands-description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin<br>
+                        porttitor nisl nec ex consectetur, quis ornare sem molestie.<br>
+                        Sed suscipit sollicitudin nulla tempor congue. Integer sed<br>
+                          </p>
+                    <a href="#" class="btn-read-more">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M5 10h10M10 5l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        read more
+                    </a>
+                </div>
+                <div class="trusted-brands-logos">
+                    <div class="brand-logo-card">
+                        <div class="brand-logo-wrapper">
+                            <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Flower logo -->
+                                <circle cx="25" cy="25" r="8" fill="#FFA726"/>
+                                <circle cx="18" cy="18" r="6" fill="#FFB74D"/>
+                                <circle cx="32" cy="18" r="6" fill="#FFB74D"/>
+                                <circle cx="18" cy="32" r="6" fill="#FFB74D"/>
+                                <circle cx="32" cy="32" r="6" fill="#FFB74D"/>
+                                <circle cx="25" cy="25" r="4" fill="#FF9800"/>
+                                <text x="50" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#424242">flower</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="brand-logo-card">
+                        <div class="brand-logo-wrapper">
+                            <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Beauty logo -->
+                                <circle cx="25" cy="25" r="12" stroke="#9C27B0" stroke-width="2" fill="none"/>
+                                <path d="M20 25Q25 30 30 25Q25 20 20 25Z" fill="#CE93D8"/>
+                                <circle cx="25" cy="25" r="3" fill="#9C27B0"/>
+                                <text x="45" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#424242">beauty</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="brand-logo-card">
+                        <div class="brand-logo-wrapper">
+                            <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Lifely logo -->
+                                <rect x="15" y="15" width="20" height="20" rx="4" stroke="#8D6E63" stroke-width="2" fill="none"/>
+                                <path d="M20 20L30 30M30 20L20 30" stroke="#8D6E63" stroke-width="2"/>
+                                <text x="42" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#424242">lifely</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="brand-logo-card">
+                        <div class="brand-logo-wrapper">
+                            <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Aura logo -->
+                                <path d="M25 15C20 15 15 20 15 25C15 30 20 35 25 35C30 35 35 30 35 25C35 20 30 15 25 15Z" fill="#00BCD4"/>
+                                <path d="M20 25C20 22 22 20 25 20C28 20 30 22 30 25" stroke="white" stroke-width="2" fill="none"/>
+                                <text x="45" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#424242">aura</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="brand-logo-card">
+                        <div class="brand-logo-wrapper">
+                            <svg viewBox="0 0 120 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Altura logo -->
+                                <path d="M20 35L25 15L30 35" stroke="#FF9800" stroke-width="2.5" fill="none"/>
+                                <line x1="22" y1="28" x2="28" y2="28" stroke="#FF9800" stroke-width="2.5"/>
+                                <text x="38" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#424242">ALTURA</text>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="brand-logo-card">
+                        <div class="brand-logo-wrapper">
+                            <svg viewBox="0 0 140 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Organica logo -->
+                                <circle cx="25" cy="25" r="12" stroke="#7CB342" stroke-width="2.5" fill="none"/>
+                                <circle cx="25" cy="25" r="6" fill="#7CB342"/>
+                                <text x="43" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#424242">organica</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-wrapper">
+                <div class="newsletter-content">
+                    <h2 class="newsletter-title">Join Our Wellness Community</h2>
+                    <p class="newsletter-text">Subscribe to get special offers, herbal tips, and updates on new products.</p>
+                </div>
+                <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5C15 5 12 10 12 15C12 18 13 20 15 22C13 23 10 25 10 30C10 33 12 35 15 35C18 35 20 33 22 30C23 32 25 35 28 35C31 35 33 33 33 30C33 25 30 23 28 22C30 20 31 18 31 15C31 10 28 5 23 5" stroke="#6B9F3E" stroke-width="2"/>
+                            <circle cx="20" cy="12" r="3" fill="#6B9F3E"/>
+                        </svg>
+                        <span class="logo-text">PureHerbal</span>
+                    </a>
+                    <p class="footer-description">Bringing nature's wellness to your home with authentic, chemical-free herbal products.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products.html">Hair Care</a></li>
+                        <li><a href="products.html">Skin Care</a></li>
+                        <li><a href="products.html">Body Care</a></li>
+                        <li><a href="products.html">Best Sellers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#benefits">Why Choose Us</a></li>
+                        <li><a href="#">Ingredients</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PureHerbal. All rights reserved. Crafted with 🌿 for your wellness.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

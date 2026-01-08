@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Browse our complete collection of natural organic wellness products. Chemical-free herbal hair care, skin care, and personal care products.">
+    <title>Products - PureHerbal Natural Wellness</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .products-hero {
+            background: linear-gradient(135deg, var(--cream) 0%, var(--beige) 100%);
+            padding: 140px 0 80px;
+            text-align: center;
+        }
+        
+        .products-hero h1 {
+            font-family: var(--font-heading);
+            font-size: 56px;
+            color: var(--dark-green);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .products-hero p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .products-section {
+            padding: 80px 0;
+        }
+        
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 12px 28px;
+            background: var(--white);
+            border: 2px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--text-dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-green);
+            color: var(--white);
+            border-color: var(--primary-green);
+        }
+        
+        .product-detail-badge {
+            display: inline-block;
+            background: var(--cream);
+            color: var(--primary-green);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 50px;
+            margin-top: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <ul class="nav-menu nav-left" id="navMenuLeft">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="products.html" class="nav-link active">Shop</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html?category=hair" class="dropdown-link">Hair Care</a></li>
+                                <li><a href="products.html?category=body" class="dropdown-link">Body Care</a></li>
+                                <li><a href="products.html?category=skin" class="dropdown-link">Skin Care</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                    </ul>
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="NaturaLife Logo" class="logo-img">
+                    </a>
+                    <div class="nav-right-wrapper">
+                        <ul class="nav-menu nav-right" id="navMenuRight">
+                            <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                            <li><a href="account.html" class="nav-link">My Account</a></li>
+                        </ul>
+                        <div class="nav-icons">
+                            <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping Cart">
+                                <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 2H4L6 14H16L18 6H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="7" cy="18" r="1" fill="currentColor"/>
+                                    <circle cx="15" cy="18" r="1" fill="currentColor"/>
+                                </svg>
+                                <span class="cart-count">0</span>
+                            </a>
+                            <button class="icon-btn search-btn" aria-label="Search">
+                                <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Products Hero -->
+    <section class="products-hero">
+        <div class="container">
+            <h1>Our Natural Collection</h1>
+            <p>Explore our complete range of chemical-free, organic wellness products crafted with love and nature's best ingredients.</p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <!-- Filter Buttons -->
+            <div class="products-filter">
+                <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                <button class="filter-btn" onclick="filterProducts('hair')">Hair Care</button>
+                <button class="filter-btn" onclick="filterProducts('skin')">Skin Care</button>
+                <button class="filter-btn" onclick="filterProducts('body')">Body Care</button>
+                <button class="filter-btn" onclick="filterProducts('face')">Face Care</button>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="hair">
+                    <div class="product-badge">Bestseller</div>
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="80" ry="15" fill="#E8F3E0" opacity="0.6"/>
+                            <rect x="110" y="90" width="80" height="130" rx="40" fill="#FFF8E7"/>
+                            <rect x="130" y="70" width="40" height="25" rx="4" fill="#D4A574"/>
+                            <ellipse cx="150" cy="82" rx="15" ry="6" fill="#8B6914"/>
+                            <rect x="120" y="130" width="60" height="50" rx="6" fill="#FFE4B5" opacity="0.8"/>
+                            <text x="150" y="155" font-family="Arial" font-size="10" fill="#8B6914" text-anchor="middle" font-weight="bold">HERBAL</text>
+                            <text x="150" y="168" font-family="Arial" font-size="8" fill="#8B6914" text-anchor="middle">Hair Oil</text>
+                            <path d="M80 140C80 140 70 150 75 165" stroke="#6B9F3E" stroke-width="2" fill="none"/>
+                            <circle cx="75" cy="145" r="5" fill="#8BC34A" opacity="0.7"/>
+                            <path d="M220 160C220 160 230 170 225 185" stroke="#6B9F3E" stroke-width="2" fill="none"/>
+                            <circle cx="225" cy="165" r="5" fill="#8BC34A" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Herbal Hair Oil</h3>
+                        <p class="product-description">Nourishing blend of 15 herbs for strong, lustrous hair</p>
+                        <span class="product-detail-badge">15 Natural Herbs</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(245 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$24.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Herbal Hair Oil', 24.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-category="skin">
+                    <div class="product-badge new">New</div>
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="70" ry="12" fill="#E8F3E0" opacity="0.6"/>
+                            <ellipse cx="150" cy="100" rx="60" ry="15" fill="#C8E6C9"/>
+                            <rect x="90" y="100" width="120" height="100" fill="#E8F5E9"/>
+                            <ellipse cx="150" cy="200" rx="60" ry="15" fill="#A5D6A7"/>
+                            <rect x="130" y="75" width="40" height="30" rx="5" fill="#81C784"/>
+                            <ellipse cx="150" cy="90" rx="15" ry="6" fill="#66BB6A"/>
+                            <rect x="110" y="130" width="80" height="45" rx="6" fill="white" opacity="0.9"/>
+                            <text x="150" y="150" font-family="Arial" font-size="12" fill="#2D5016" text-anchor="middle" font-weight="bold">ALOE</text>
+                            <text x="150" y="165" font-family="Arial" font-size="9" fill="#2D5016" text-anchor="middle">VERA GEL</text>
+                            <path d="M60 170L50 200L60 195Z" fill="#66BB6A"/>
+                            <path d="M240 180L250 210L240 205Z" fill="#66BB6A"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Aloe Vera Gel</h3>
+                        <p class="product-description">Pure 99% aloe extract for skin hydration & healing</p>
+                        <span class="product-detail-badge">99% Pure Aloe</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(189 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$18.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Aloe Vera Gel', 18.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-category="hair">
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="260" rx="75" ry="15" fill="#E8F3E0" opacity="0.6"/>
+                            <path d="M110 110C110 100 120 90 150 90C180 90 190 100 190 110V220C190 230 180 240 150 240C120 240 110 230 110 220V110Z" fill="#E3F2FD"/>
+                            <rect x="135" y="70" width="30" height="25" rx="3" fill="#90CAF9"/>
+                            <ellipse cx="150" cy="82" rx="12" ry="5" fill="#42A5F5"/>
+                            <rect x="120" y="140" width="60" height="55" rx="8" fill="white" opacity="0.85"/>
+                            <text x="150" y="160" font-family="Arial" font-size="10" fill="#1565C0" text-anchor="middle" font-weight="bold">HERBAL</text>
+                            <text x="150" y="173" font-family="Arial" font-size="9" fill="#1565C0" text-anchor="middle">Shampoo</text>
+                            <text x="150" y="185" font-family="Arial" font-size="7" fill="#1565C0" text-anchor="middle">Natural Care</text>
+                            <circle cx="75" cy="160" r="8" fill="#E3F2FD" opacity="0.7"/>
+                            <circle cx="85" cy="180" r="6" fill="#E3F2FD" opacity="0.7"/>
+                            <circle cx="225" cy="170" r="10" fill="#E3F2FD" opacity="0.7"/>
+                            <circle cx="215" cy="195" r="7" fill="#E3F2FD" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Herbal Shampoo</h3>
+                        <p class="product-description">Gentle cleansing with natural herbs & essential oils</p>
+                        <span class="product-detail-badge">Sulfate-Free</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(156 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$16.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Herbal Shampoo', 16.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-category="body">
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="60" ry="12" fill="#E8F3E0" opacity="0.6"/>
+                            <rect x="90" y="110" width="120" height="90" rx="12" fill="#C8E6C9" opacity="0.9"/>
+                            <rect x="95" y="115" width="110" height="80" rx="10" fill="#A5D6A7"/>
+                            <path d="M100 150H200M100 165H200M100 180H200" stroke="#66BB6A" stroke-width="2" opacity="0.4"/>
+                            <text x="150" y="155" font-family="Arial" font-size="14" fill="#2D5016" text-anchor="middle" font-weight="bold">NEEM</text>
+                            <text x="150" y="173" font-family="Arial" font-size="10" fill="#2D5016" text-anchor="middle">Natural Soap</text>
+                            <ellipse cx="70" cy="130" rx="12" ry="25" fill="#81C784" opacity="0.6"/>
+                            <ellipse cx="65" cy="135" rx="10" ry="20" fill="#66BB6A" opacity="0.6"/>
+                            <ellipse cx="230" cy="140" rx="12" ry="25" fill="#81C784" opacity="0.6"/>
+                            <ellipse cx="235" cy="145" rx="10" ry="20" fill="#66BB6A" opacity="0.6"/>
+                            <circle cx="180" cy="220" r="15" fill="white" opacity="0.6"/>
+                            <circle cx="195" cy="230" r="10" fill="white" opacity="0.6"/>
+                            <circle cx="120" cy="225" r="12" fill="white" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Neem Soap</h3>
+                        <p class="product-description">Antibacterial neem soap for clear, healthy skin</p>
+                        <span class="product-detail-badge">Antibacterial</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(312 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$8.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Neem Soap', 8.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="product-card" data-category="face">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="65" ry="12" fill="#E8F3E0" opacity="0.6"/>
+                            <ellipse cx="150" cy="110" rx="55" ry="15" fill="#D4A574"/>
+                            <rect x="95" y="110" width="110" height="95" fill="#E8D4B8"/>
+                            <ellipse cx="150" cy="205" rx="55" ry="15" fill="#C8A56B"/>
+                            <rect x="135" y="90" width="30" height="25" rx="4" fill="#A68A3D"/>
+                            <rect x="115" y="140" width="70" height="45" rx="6" fill="white" opacity="0.85"/>
+                            <text x="150" y="158" font-family="Arial" font-size="11" fill="#8B6914" text-anchor="middle" font-weight="bold">HERBAL</text>
+                            <text x="150" y="172" font-family="Arial" font-size="9" fill="#8B6914" text-anchor="middle">Face Pack</text>
+                            <circle cx="70" cy="150" r="8" fill="#C8E6C9" opacity="0.7"/>
+                            <circle cx="230" cy="160" r="10" fill="#C8E6C9" opacity="0.7"/>
+                            <path d="M60 180C60 180 55 190 60 200" stroke="#6B9F3E" stroke-width="2"/>
+                            <path d="M240 185C240 185 245 195 240 205" stroke="#6B9F3E" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Herbal Face Pack</h3>
+                        <p class="product-description">Natural clay & herbs for deep cleansing & glow</p>
+                        <span class="product-detail-badge">Deep Cleansing</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(198 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$14.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Herbal Face Pack', 14.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="product-card" data-category="skin">
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="255" rx="70" ry="12" fill="#E8F3E0" opacity="0.6"/>
+                            <rect x="100" y="100" width="100" height="130" rx="50" fill="#FFE4E1"/>
+                            <rect x="125" y="80" width="50" height="25" rx="5" fill="#FFB6C1"/>
+                            <ellipse cx="150" cy="92" rx="18" ry="7" fill="#FF69B4"/>
+                            <rect x="115" y="145" width="70" height="55" rx="8" fill="white" opacity="0.85"/>
+                            <text x="150" y="163" font-family="Arial" font-size="10" fill="#C71585" text-anchor="middle" font-weight="bold">ROSE</text>
+                            <text x="150" y="177" font-family="Arial" font-size="9" fill="#C71585" text-anchor="middle">Body Lotion</text>
+                            <circle cx="75" cy="160" r="7" fill="#FFB6C1" opacity="0.6"/>
+                            <circle cx="225" cy="170" r="8" fill="#FFB6C1" opacity="0.6"/>
+                            <path d="M65 185C70 180 75 180 80 185C75 190 70 190 65 185Z" fill="#FF69B4" opacity="0.5"/>
+                            <path d="M220 195C225 190 230 190 235 195C230 200 225 200 220 195Z" fill="#FF69B4" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Rose Body Lotion</h3>
+                        <p class="product-description">Hydrating lotion with pure rose extracts</p>
+                        <span class="product-detail-badge">Rose Extract</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(167 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$22.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Rose Body Lotion', 22.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="product-card" data-category="hair">
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="255" rx="75" ry="14" fill="#E8F3E0" opacity="0.6"/>
+                            <path d="M110 115C110 105 120 95 150 95C180 95 190 105 190 115V220C190 230 180 240 150 240C120 240 110 230 110 220V115Z" fill="#FFF9E6"/>
+                            <rect x="135" y="75" width="30" height="25" rx="3" fill="#FFD700"/>
+                            <ellipse cx="150" cy="87" rx="12" ry="5" fill="#FFA500"/>
+                            <rect x="120" y="145" width="60" height="55" rx="8" fill="white" opacity="0.85"/>
+                            <text x="150" y="163" font-family="Arial" font-size="9" fill="#FF8C00" text-anchor="middle" font-weight="bold">COCONUT</text>
+                            <text x="150" y="176" font-family="Arial" font-size="8" fill="#FF8C00" text-anchor="middle">Conditioner</text>
+                            <circle cx="80" cy="165" r="8" fill="#FFF9E6" opacity="0.7"/>
+                            <circle cx="220" cy="175" r="9" fill="#FFF9E6" opacity="0.7"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Coconut Conditioner</h3>
+                        <p class="product-description">Nourishing conditioner with virgin coconut oil</p>
+                        <span class="product-detail-badge">Virgin Coconut</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(143 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$17.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Coconut Conditioner', 17.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="product-card" data-category="body">
+                    <div class="product-badge">Organic</div>
+                    <div class="product-image">
+                        <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="300" height="300" rx="12" fill="#F5F9F2"/>
+                            <ellipse cx="150" cy="250" rx="65" ry="12" fill="#E8F3E0" opacity="0.6"/>
+                            <rect x="90" y="115" width="120" height="85" rx="12" fill="#E6E6FA" opacity="0.9"/>
+                            <rect x="95" y="120" width="110" height="75" rx="10" fill="#DDA0DD"/>
+                            <text x="150" y="153" font-family="Arial" font-size="13" fill="#8B008B" text-anchor="middle" font-weight="bold">LAVENDER</text>
+                            <text x="150" y="170" font-family="Arial" font-size="9" fill="#8B008B" text-anchor="middle">Bath Soap</text>
+                            <ellipse cx="65" cy="135" rx="10" ry="20" fill="#9370DB" opacity="0.6"/>
+                            <ellipse cx="235" cy="145" rx="10" ry="20" fill="#9370DB" opacity="0.6"/>
+                            <circle cx="185" cy="215" r="14" fill="white" opacity="0.6"/>
+                            <circle cx="115" cy="220" r="11" fill="white" opacity="0.6"/>
+                        </svg>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">Lavender Bath Soap</h3>
+                        <p class="product-description">Relaxing lavender soap for calming bath</p>
+                        <span class="product-detail-badge">Calming</span>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(201 reviews)</span>
+                        </div>
+                        <div class="product-footer">
+                            <span class="product-price">$9.99</span>
+                            <button class="btn-add-cart" onclick="addToCart('Lavender Bath Soap', 9.99)">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 5C15 5 12 10 12 15C12 18 13 20 15 22C13 23 10 25 10 30C10 33 12 35 15 35C18 35 20 33 22 30C23 32 25 35 28 35C31 35 33 33 33 30C33 25 30 23 28 22C30 20 31 18 31 15C31 10 28 5 23 5" stroke="#6B9F3E" stroke-width="2"/>
+                            <circle cx="20" cy="12" r="3" fill="#6B9F3E"/>
+                        </svg>
+                        <span class="logo-text">PureHerbal</span>
+                    </a>
+                    <p class="footer-description">Bringing nature's wellness to your home with authentic, chemical-free herbal products.</p>
+                    <div class="footer-social">
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Shop</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html">All Products</a></li>
+                        <li><a href="products.html">Hair Care</a></li>
+                        <li><a href="products.html">Skin Care</a></li>
+                        <li><a href="products.html">Body Care</a></li>
+                        <li><a href="products.html">Best Sellers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">About</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#about">Our Story</a></li>
+                        <li><a href="index.html#benefits">Why Choose Us</a></li>
+                        <li><a href="#">Ingredients</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PureHerbal. All rights reserved. Crafted with 🌿 for your wellness.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter products
+            products.forEach(product => {
+                if (category === 'all' || product.dataset.category === category) {
+                    product.style.display = 'block';
+                    setTimeout(() => product.style.opacity = '1', 10);
+                } else {
+                    product.style.opacity = '0';
+                    setTimeout(() => product.style.display = 'none', 300);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

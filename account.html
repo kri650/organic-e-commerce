@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Account - PureHerbal Natural Wellness</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <ul class="nav-menu nav-left" id="navMenuLeft">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="dropdown">
+                            <a href="products.html" class="nav-link">Shop</a>
+                            <ul class="dropdown-menu">
+                                <li><a href="products.html?category=hair" class="dropdown-link">Hair Care</a></li>
+                                <li><a href="products.html?category=body" class="dropdown-link">Body Care</a></li>
+                                <li><a href="products.html?category=skin" class="dropdown-link">Skin Care</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="about.html" class="nav-link">About Us</a></li>
+                    </ul>
+                    <a href="index.html" class="logo">
+                        <img src="images/logo.png" alt="NaturaLife Logo" class="logo-img">
+                    </a>
+                    <div class="nav-right-wrapper">
+                        <ul class="nav-menu nav-right" id="navMenuRight">
+                            <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                            <li><a href="account.html" class="nav-link active">My Account</a></li>
+                        </ul>
+                        <div class="nav-icons">
+                            <a href="cart.html" class="icon-btn cart-btn" aria-label="Shopping Cart">
+                                <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M2 2H4L6 14H16L18 6H6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="7" cy="18" r="1" fill="currentColor"/>
+                                    <circle cx="15" cy="18" r="1" fill="currentColor"/>
+                                </svg>
+                                <span class="cart-count">0</span>
+                            </a>
+                            <button class="icon-btn search-btn" aria-label="Search">
+                                <svg width="22" height="22" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M14 14L18 18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                </svg>
+                            </button>
+                            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">My Account</h1>
+            <p class="page-subtitle">Manage your profile and orders</p>
+        </div>
+    </section>
+
+    <!-- Account Content -->
+    <section class="account-section">
+        <div class="container">
+            <div class="account-container">
+                <!-- Login Form -->
+                <div class="auth-forms" id="authForms">
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="login">Login</button>
+                        <button class="auth-tab" data-tab="register">Register</button>
+                    </div>
+
+                    <!-- Login Form -->
+                    <div class="tab-content active" id="login">
+                        <form class="auth-form">
+                            <div class="form-group">
+                                <label for="loginEmail">Email Address</label>
+                                <input type="email" id="loginEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Password</label>
+                                <input type="password" id="loginPassword" required>
+                            </div>
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox">
+                                    <span>Remember me</span>
+                                </label>
+                                <a href="#" class="forgot-password">Forgot password?</a>
+                            </div>
+                            <button type="submit" class="btn-primary">Login</button>
+                        </form>
+                    </div>
+
+                    <!-- Register Form -->
+                    <div class="tab-content" id="register">
+                        <form class="auth-form">
+                            <div class="form-group">
+                                <label for="registerName">Full Name</label>
+                                <input type="text" id="registerName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerEmail">Email Address</label>
+                                <input type="email" id="registerEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerPassword">Password</label>
+                                <input type="password" id="registerPassword" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="registerConfirm">Confirm Password</label>
+                                <input type="password" id="registerConfirm" required>
+                            </div>
+                            <div class="form-options">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" required>
+                                    <span>I agree to the Terms & Conditions</span>
+                                </label>
+                            </div>
+                            <button type="submit" class="btn-primary">Create Account</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Account Dashboard (hidden by default) -->
+                <div class="account-dashboard" id="accountDashboard" style="display: none;">
+                    <div class="dashboard-sidebar">
+                        <div class="user-info">
+                            <div class="user-avatar">
+                                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                                    <circle cx="30" cy="30" r="30" fill="#E8F5E9"/>
+                                    <path d="M30 30C35.5228 30 40 25.5228 40 20C40 14.4772 35.5228 10 30 10C24.4772 10 20 14.4772 20 20C20 25.5228 24.4772 30 30 30Z" fill="#4A9B4F"/>
+                                    <path d="M50 50C50 41.7157 41.7157 35 30 35C18.2843 35 10 41.7157 10 50" fill="#4A9B4F"/>
+                                </svg>
+                            </div>
+                            <h3>Welcome, User!</h3>
+                            <p>user@email.com</p>
+                        </div>
+                        <nav class="dashboard-nav">
+                            <a href="#" class="dashboard-link active">Dashboard</a>
+                            <a href="#" class="dashboard-link">Orders</a>
+                            <a href="#" class="dashboard-link">Addresses</a>
+                            <a href="#" class="dashboard-link">Account Details</a>
+                            <a href="#" class="dashboard-link">Logout</a>
+                        </nav>
+                    </div>
+
+                    <div class="dashboard-content">
+                        <h2>Order History</h2>
+                        <div class="orders-list">
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <span class="order-number">Order #12345</span>
+                                    <span class="order-date">January 5, 2026</span>
+                                </div>
+                                <div class="order-items">
+                                    <p>3 items • $89.97</p>
+                                </div>
+                                <div class="order-status">
+                                    <span class="status-badge delivered">Delivered</span>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+
+                            <div class="order-card">
+                                <div class="order-header">
+                                    <span class="order-number">Order #12344</span>
+                                    <span class="order-date">December 28, 2025</span>
+                                </div>
+                                <div class="order-items">
+                                    <p>2 items • $59.98</p>
+                                </div>
+                                <div class="order-status">
+                                    <span class="status-badge delivered">Delivered</span>
+                                    <button class="btn-secondary">View Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About PureHerbal</h4>
+                    <p>Your trusted source for natural, organic wellness products.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="products.html">Shop</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="account.html">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Email: info@pureherbal.com</p>
+                    <p>Phone: (555) 123-4567</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PureHerbal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Tab switching
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.dataset.tab;
+                
+                // Update active tab
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Update active content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabName).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
