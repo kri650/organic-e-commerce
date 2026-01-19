@@ -83,7 +83,7 @@ function initFeatureSlideshow(intervalSeconds = 2) {
 // - Exposes: registerUser, loginUser, logoutUser, getCurrentUser
 // ==========================
 
-const API_BASE = 'http://localhost:5000/api';
+const API_BASE = 'https://prakriti-care.onrender.com/api';
 const AUTH_TOKEN_KEY = 'ph_token';
 const AUTH_USER_KEY = 'ph_user';
 
