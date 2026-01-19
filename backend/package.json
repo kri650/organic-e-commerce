@@ -1,0 +1,24 @@
+{
+  "name": "organic-e-commerce-frontend",
+  "version": "1.0.0",
+  "description": "Frontend for organic-e-commerce (static site)",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "test": "echo \"No tests\" && exit 0"
+  },
+  "keywords": ["frontend", "static", "ecommerce"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "*",
+    "mongoose": "*",
+    "bcryptjs": "*",
+    "jsonwebtoken": "*",
+    "dotenv": "*",
+    "cors": "*"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

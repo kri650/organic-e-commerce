@@ -1,4 +1,4 @@
-# PureHerbal - Organic Wellness E-Commerce Website
+# Parakriti Care - Organic Wellness E-Commerce Website
 
 A clean, modern, and professional organic wellness e-commerce website focused on herbal and natural personal care products. Inspired by premium natural product websites, this site promotes chemical-free, eco-friendly wellness items made using traditional herbal ingredients.
 
@@ -145,7 +145,7 @@ All product images are custom-designed SVG illustrations including:
 
 ## 💡 Brand Message
 
-PureHerbal promotes:
+Parakriti Care promotes:
 - 100% Natural & Organic ingredients
 - Chemical-Free formulations
 - Traditional herbal recipes

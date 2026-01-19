@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Account - PureHerbal Natural Wellness</title>
+    <title>My Account - Parakriti Care Natural Wellness</title>
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="shortcut icon" href="images/logo.png" type="image/png">
     <link rel="stylesheet" href="styles.css?v=2">
@@ -148,57 +148,105 @@
                     </div>
                     <h4 style="margin:12px 0 12px 0; padding-left:8px; font-size:14px; color:#666;">Hello, <span id="sidebarUserName">User</span></h4>
                     <nav class="dashboard-nav">
-                        <a href="#" class="dashboard-link" data-target="dashboardOverview">Dashboard</a>
-                        <a href="#" class="dashboard-link active" data-target="dashboardOrders">Orders</a>
-                        <a href="#" class="dashboard-link" data-target="dashboardAddresses">Addresses</a>
-                        <a href="#" class="dashboard-link" data-target="dashboardDetails">Account Details</a>
+                        <a href="#" class="dashboard-link" data-tab="overview">Dashboard</a>
+                        <a href="#" class="dashboard-link active" data-tab="orders">Orders</a>
+                        <a href="#" class="dashboard-link" data-tab="rewards">Rewards</a>
+                        <a href="#" class="dashboard-link" data-tab="addresses">Addresses</a>
+                        <a href="#" class="dashboard-link" data-tab="details">Account Details</a>
+                        <a href="#" class="dashboard-link" data-tab="wishlist">Wishlist</a>
                         <a href="#" id="logoutLink" class="dashboard-link">Log Out</a>
                     </nav>
-
-                    <div class="payment-summary" style="margin-top:18px;">
-                        <div class="payment-row"><span>Wallet</span><strong id="paymentWallet">₹0</strong></div>
-                        <div class="payment-row"><span>Gift Cards</span><strong id="paymentGifts">₹0</strong></div>
-                        <div class="payment-row"><span>Pay Later</span><strong id="paymentPayLater">₹0 / ₹0</strong></div>
-                    </div>
                 </aside>
 
                 <!-- Main content -->
                 <main class="dashboard-content">
-                    <div id="dashboardOrders" class="dashboard-panel" style="display:block;">
-                        <h2>Orders</h2>
-                        <div class="orders-list">
-                            <!-- orders-table will be injected here by script.js -->
+                    <div class="tabs">
+                        <div class="tab-buttons">
+                            <button class="tab-btn active" data-tab="orders">Orders</button>
+                            <button class="tab-btn" data-tab="rewards">Rewards</button>
+                            <button class="tab-btn" data-tab="overview">Overview</button>
+                            <button class="tab-btn" data-tab="addresses">Addresses</button>
+                            <button class="tab-btn" data-tab="details">Account Details</button>
+                            <button class="tab-btn" data-tab="wishlist">Wishlist</button>
                         </div>
-                    </div>
-
-                    <div id="dashboardOverview" class="dashboard-panel" style="display:none;">
-                        <h2>Overview</h2>
-                        <p>Quick links and account summary.</p>
-                    </div>
-
-                    <div id="dashboardAddresses" class="dashboard-panel" style="display:none;">
-                        <h2>Addresses</h2>
-                        <div class="addresses-list"></div>
-                        <button id="addAddressBtn" class="btn-primary">Add New Address</button>
-                    </div>
-
-                    <div id="dashboardDetails" class="dashboard-panel" style="display:none;">
-                        <h2>Account Details</h2>
-                        <form id="accountDetailsForm" class="account-details-form">
-                            <div class="form-group">
-                                <label for="accountName">Full name</label>
-                                <input id="accountName" type="text">
+                        <div class="tab-content active" id="orders">
+                            <div class="orders-list">
+                                <!-- orders-table will be injected here by script.js -->
                             </div>
-                            <div class="form-group">
-                                <label for="accountEmail">Email</label>
-                                <input id="accountEmail" type="email" disabled>
+                        </div>
+                        <div class="tab-content" id="rewards">
+                            <div class="wellness-rewards">
+                                <h4 class="rewards-title">Rewards & Points</h4>
+                                <div class="rewards-content">
+                                    <div class="reward-item">
+                                        <div class="reward-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                                <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" fill="#4A9B4F"/>
+                                            </svg>
+                                        </div>
+                                        <div class="reward-content">
+                                            <span class="reward-label">Loyalty Points</span>
+                                            <span class="reward-value" id="loyaltyPoints">0</span>
+                                        </div>
+                                    </div>
+                                    <div class="reward-item">
+                                        <div class="reward-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9M19 9H14V4H19V9Z" fill="#4A9B4F"/>
+                                            </svg>
+                                        </div>
+                                        <div class="reward-content">
+                                            <span class="reward-label">Wellness Rewards</span>
+                                            <span class="reward-value" id="wellnessRewards">₹0</span>
+                                        </div>
+                                    </div>
+                                    <div class="reward-item">
+                                        <div class="reward-icon">
+                                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 2L13.09 5.26L17 5L14 8L14.91 12L12 10L9.09 12L10 8L7 5L10.91 5.26L12 2ZM12 6.5L10.5 9.5L7.5 9L9.75 11L9.08 14L12 12.25L14.92 14L14.25 11L16.5 9L13.5 9.5L12 6.5Z" fill="#4A9B4F"/>
+                                            </svg>
+                                        </div>
+                                        <div class="reward-content">
+                                            <span class="reward-label">Next Reward</span>
+                                            <span class="reward-value" id="nextReward">₹0</span>
+                                        </div>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 0%;"></div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="accountPassword">New Password (leave blank to keep)</label>
-                                <input id="accountPassword" type="password">
+                        </div>
+                        <div class="tab-content" id="overview">
+                            <p>Quick links and account summary.</p>
+                        </div>
+                        <div class="tab-content" id="addresses">
+                            <div class="addresses-list"></div>
+                            <button id="addAddressBtn" class="btn-primary">Add New Address</button>
+                        </div>
+                        <div class="tab-content" id="details">
+                            <form id="accountDetailsForm" class="account-details-form">
+                                <div class="form-group">
+                                    <label for="accountName">Full name</label>
+                                    <input id="accountName" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <label for="accountEmail">Email</label>
+                                    <input id="accountEmail" type="email" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label for="accountPassword">New Password (leave blank to keep)</label>
+                                    <input id="accountPassword" type="password">
+                                </div>
+                                <button type="submit" class="btn-primary">Save Changes</button>
+                            </form>
+                        </div>
+                        <div class="tab-content" id="wishlist">
+                            <div class="wishlist-list">
+                                <!-- Wishlist items will be displayed here -->
+                                <p>Your wishlist is empty.</p>
                             </div>
-                            <button type="submit" class="btn-primary">Save Changes</button>
-                        </form>
+                        </div>
                     </div>
                 </main>
             </div>
@@ -210,7 +258,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>About PureHerbal</h4>
+                    <h4>About Parakriti Care</h4>
                     <p>Your trusted source for natural, organic wellness products.</p>
                 </div>
                 <div class="footer-section">
@@ -229,7 +277,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 PureHerbal. All rights reserved.</p>
+                <p>&copy; 2026 Parakriti Care. All rights reserved.</p>
             </div>
         </div>
     </footer>

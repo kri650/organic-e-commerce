@@ -77,14 +77,15 @@ function initFeatureSlideshow(intervalSeconds = 2) {
 }
 
 // ==========================
-// CLIENT-SIDE AUTH (local)
-// - Simple localStorage-backed users for demo/dev only
-// - Uses Web Crypto Subtle hashing (SHA-256) to avoid storing plain passwords
+// CLIENT-SIDE AUTH (backend)
+// - Uses backend API for authentication
+// - Stores JWT token in localStorage
 // - Exposes: registerUser, loginUser, logoutUser, getCurrentUser
 // ==========================
 
-const AUTH_USERS_KEY = 'ph_users';
-const AUTH_CURRENT_KEY = 'ph_current_user';
+const API_BASE = 'http://localhost:5000/api';
+const AUTH_TOKEN_KEY = 'ph_token';
+const AUTH_USER_KEY = 'ph_user';
 
 async function hashPassword(password) {
 	const enc = new TextEncoder();
@@ -108,45 +109,51 @@ function setCurrentUser(email) {
 }
 
 function getCurrentUser() {
-	const email = localStorage.getItem(AUTH_CURRENT_KEY);
-	if (!email) return null;
-	const users = getSavedUsers();
-	return users[email] || null;
+	const user = localStorage.getItem(AUTH_USER_KEY);
+	return user ? JSON.parse(user) : null;
 }
 
 async function registerUser({ name, email, password }) {
-	const users = getSavedUsers();
-	if (users[email]) {
-		throw new Error('User already exists');
-	}
-	const pwHash = await hashPassword(password);
-	users[email] = {
-		name,
-		email,
-		passwordHash: pwHash,
-		createdAt: Date.now(),
-		addresses: [],
-		orders: [],
-		payments: { wallet: 0, gifts: 0, payLater: { used: 0, limit: 0 } },
-		wishlist: []
-	};
-	saveUsers(users);
-	setCurrentUser(email);
-	return users[email];
+	const response = await fetch(`${API_BASE}/auth/register`, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ name, email, password })
+	});
+	const data = await response.json();
+	if (!response.ok) throw new Error(data.message);
+	localStorage.setItem(AUTH_TOKEN_KEY, data.token);
+	localStorage.setItem(AUTH_USER_KEY, JSON.stringify(data.user));
+	return data.user;
 }
 
 async function loginUser({ email, password }) {
-	const users = getSavedUsers();
-	const user = users[email];
-	if (!user) throw new Error('No account for that email');
-	const pwHash = await hashPassword(password);
-	if (pwHash !== user.passwordHash) throw new Error('Incorrect password');
-	setCurrentUser(email);
-	return user;
+	const response = await fetch(`${API_BASE}/auth/login`, {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify({ email, password })
+	});
+	const data = await response.json();
+	if (!response.ok) throw new Error(data.message);
+	localStorage.setItem(AUTH_TOKEN_KEY, data.token);
+	localStorage.setItem(AUTH_USER_KEY, JSON.stringify(data.user));
+	return data.user;
 }
 
 function logoutUser() {
-	setCurrentUser(null);
+	localStorage.removeItem(AUTH_TOKEN_KEY);
+	localStorage.removeItem(AUTH_USER_KEY);
+}
+
+async function fetchProfile() {
+	const token = localStorage.getItem(AUTH_TOKEN_KEY);
+	if (!token) return null;
+	const response = await fetch(`${API_BASE}/profile/profile`, {
+		headers: { 'Authorization': `Bearer ${token}` }
+	});
+	if (!response.ok) return null;
+	const data = await response.json();
+	localStorage.setItem(AUTH_USER_KEY, JSON.stringify(data));
+	return data;
 }
 
 // Wire up account page forms and dashboard toggling
@@ -181,9 +188,11 @@ document.addEventListener('DOMContentLoaded', function() {
 			// ignore if tabs not present
 		}
 
-		function showDashboardFor(user) {
+		async function showDashboardFor(user) {
 			if (!user) return;
 			try {
+				// Fetch full profile data
+				const profile = await fetchProfile() || user;
 				if (authForms) {
 					authForms.style.display = 'none';
 					authForms.setAttribute('aria-hidden', 'true');
@@ -194,8 +203,11 @@ document.addEventListener('DOMContentLoaded', function() {
 					accountDashboard.style.display = '';
 					accountDashboard.setAttribute('aria-hidden', 'false');
 				}
-				if (userNameDisplay) userNameDisplay.textContent = user.name || 'User';
-				if (userEmailDisplay) userEmailDisplay.textContent = user.email || '';
+				if (userNameDisplay) userNameDisplay.textContent = `Welcome, ${profile.name || 'User'}!`;
+				if (userEmailDisplay) userEmailDisplay.textContent = profile.email || '';
+				// Update sidebar user name
+				const sidebarUserName = document.getElementById('sidebarUserName');
+				if (sidebarUserName) sidebarUserName.textContent = profile.name || 'User';
 				// smooth scroll the dashboard into view for a clear transition
 				setTimeout(() => {
 					try {
@@ -276,181 +288,246 @@ document.addEventListener('DOMContentLoaded', function() {
 				showAuthForms();
 			});
 		}
-		// Dashboard panel switching
-		const sidebarLinks = document.querySelectorAll('.dashboard-nav .dashboard-link[data-target]');
+
+		// Rewards section toggle
+		const rewardsToggle = document.querySelector('.rewards-toggle');
+		if (rewardsToggle) {
+			rewardsToggle.addEventListener('click', function() {
+				const wellnessRewards = document.querySelector('.wellness-rewards');
+				wellnessRewards.classList.toggle('expanded');
+			});
+		}
+		// Accordion toggle functionality
+		function toggleAccordion(target) {
+			const items = document.querySelectorAll('.accordion-item');
+			items.forEach(item => {
+				if (item.dataset.target === target) {
+					item.classList.toggle('active');
+					const content = item.querySelector('.accordion-content');
+					const toggle = item.querySelector('.accordion-toggle');
+					if (item.classList.contains('active')) {
+						content.style.display = 'block';
+						toggle.textContent = '-';
+					} else {
+						content.style.display = 'none';
+						toggle.textContent = '+';
+					}
+				} else {
+					item.classList.remove('active');
+					const content = item.querySelector('.accordion-content');
+					const toggle = item.querySelector('.accordion-toggle');
+					content.style.display = 'none';
+					toggle.textContent = '+';
+				}
+			});
+		}
+
+		// Tab switching functionality
+		function switchToTab(tabId) {
+			const tabButtons = document.querySelectorAll('.tab-btn');
+			const tabContents = document.querySelectorAll('.tab-content');
+			tabButtons.forEach(btn => {
+				btn.classList.remove('active');
+				if (btn.getAttribute('data-tab') === tabId) {
+					btn.classList.add('active');
+				}
+			});
+			tabContents.forEach(content => {
+				content.classList.remove('active');
+				if (content.id === tabId) {
+					content.classList.add('active');
+				}
+			});
+		}
+
+		// Dashboard panel switching via sidebar links
+		const sidebarLinks = document.querySelectorAll('.dashboard-nav .dashboard-link[data-tab]');
 		sidebarLinks.forEach(link => {
 			link.addEventListener('click', function(e) {
 				e.preventDefault();
-				const target = this.dataset.target;
-				// deactivate links
-				sidebarLinks.forEach(l => l.classList.remove('active'));
-				this.classList.add('active');
-				// hide panels
-				document.querySelectorAll('.dashboard-panel').forEach(p => {
-					p.style.display = 'none';
-					p.classList.remove('active');
-				});
-				// Dashboard data rendering helpers
-				function renderOrdersFor(user) {
-					const ordersPanel = document.getElementById('dashboardOrders');
-					if (!ordersPanel) return;
-					const ordersList = ordersPanel.querySelector('.orders-list');
-					if (!ordersList) return;
-					ordersList.innerHTML = '';
-					const orders = user.orders && user.orders.length ? user.orders : [];
-					if (!orders.length) {
-						ordersList.innerHTML = '<p>You have no orders yet. Your orders will appear here once you place them.</p>';
-						return;
-					}
-
-					// Build an orders table
-					const table = document.createElement('table');
-					table.className = 'orders-table';
-					table.innerHTML = `
-						<thead>
-							<tr>
-								<th>Order</th>
-								<th>Date</th>
-								<th>Status</th>
-								<th>Total</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody></tbody>
-					`;
-					const tbody = table.querySelector('tbody');
-
-					orders.forEach(o => {
-						const tr = document.createElement('tr');
-						const total = (parseFloat(o.total) || 0).toFixed(2);
-						tr.innerHTML = `
-							<td><a href="#" class="order-id-link">#${o.id}</a></td>
-							<td>${o.date || ''}</td>
-							<td><span class="status-badge ${String(o.status || '').toLowerCase()}">${o.status || 'Pending'}</span></td>
-							<td>$${total} for ${o.items || 1} item(s)</td>
-							<td><button class="order-view-btn order-view-btn-js" data-order-id="${o.id}">View</button></td>
-						`;
-						tbody.appendChild(tr);
-					});
-
-					ordersList.appendChild(table);
-
-					// Wire view buttons
-					ordersList.querySelectorAll('.order-view-btn-js').forEach(btn => {
-						btn.addEventListener('click', function() {
-							const id = this.dataset.orderId;
-							const order = orders.find(x => String(x.id) === String(id));
-							openOrderModal(id, order || null);
-						});
-					});
-
-					// attach view details handlers
-					ordersList.querySelectorAll('.view-order').forEach(btn => {
-						btn.addEventListener('click', function() {
-							const id = this.dataset.orderId;
-							openOrderModal(id, orders.find(x => x.id === id) || null);
-						});
-					});
-				}
-
-				function renderAddressesFor(user) {
-					const panel = document.getElementById('dashboardAddresses');
-					if (!panel) return;
-					const list = panel.querySelector('.addresses-list');
-					list.innerHTML = '';
-					const addresses = user.addresses || [];
-					if (!addresses.length) {
-						list.innerHTML = '<p>No saved addresses yet.</p>';
-						return;
-					}
-					addresses.forEach((a, idx) => {
-						const card = document.createElement('div');
-						card.className = 'address-card';
-						card.innerHTML = `
-							<p><strong>${a.label || 'Address ' + (idx+1)}</strong></p>
-							<p>${a.line1}</p>
-							<p>${a.city}, ${a.postcode}</p>
-							<p>Phone: ${a.phone || ''}</p>
-							<div class="address-actions">
-								<button class="btn-secondary edit-address" data-index="${idx}">Edit</button>
-								<button class="btn-secondary remove-address" data-index="${idx}">Remove</button>
-							</div>
-						`;
-						list.appendChild(card);
-					});
-
-					list.querySelectorAll('.remove-address').forEach(btn => {
-						btn.addEventListener('click', function() {
-							const i = parseInt(this.dataset.index, 10);
-							const users = getSavedUsers();
-							const cur = getCurrentUser();
-							if (!cur) return;
-							const u = users[cur.email] || cur;
-							u.addresses = (u.addresses || []).filter((_, idx) => idx !== i);
-							users[cur.email] = u;
-							saveUsers(users);
-							showNotification('Address removed');
-							renderAddressesFor(u);
-						});
-					});
-				}
-
-				function openOrderModal(id, order) {
-					// create or update modal element
-					let modal = document.getElementById('orderModal');
-					if (!modal) {
-						modal = document.createElement('div');
-						modal.id = 'orderModal';
-						modal.className = 'order-modal';
-						modal.innerHTML = `
-							<div class="order-modal-content">
-								<button class="order-modal-close">×</button>
-								<div class="order-modal-body"></div>
-							</div>
-						`;
-						document.body.appendChild(modal);
-						modal.querySelector('.order-modal-close').addEventListener('click', () => modal.remove());
-					}
-					const body = modal.querySelector('.order-modal-body');
-					if (!order) body.innerHTML = `<p>Order ${id} details not found.</p>`;
-					else body.innerHTML = `
-						<h3>Order #${order.id}</h3>
-						<p>Date: ${order.date}</p>
-						<p>Items: ${order.items}</p>
-						<p>Total: $${order.total.toFixed(2)}</p>
-						<p>Status: ${order.status}</p>
-					`;
-					// show modal
-					modal.style.display = 'flex';
-				}
-
-				// Address addition is handled via modal/delegated handlers (ensureAddressModal + delegated clicks)
-
-				// Account details save handled later (single, consolidated handler below)
-
-				// Render initial panels for current user
-				const curUser = getCurrentUser();
-				if (curUser) {
-					renderOrdersFor(curUser);
-					renderAddressesFor(curUser);
-					// prefill account details
-					const users = getSavedUsers();
-					const u = users[curUser.email] || curUser;
-					if (document.getElementById('accountName')) document.getElementById('accountName').value = u.name || '';
-					if (document.getElementById('accountEmail')) document.getElementById('accountEmail').value = u.email || '';
-					if (document.getElementById('sidebarUserName')) document.getElementById('sidebarUserName').textContent = u.name || '';
-				}
-				const panel = document.getElementById(target);
-				if (panel) {
-					panel.style.display = '';
-					panel.classList.add('active');
-					// bring the activated panel to the center of the viewport for clear focus
-					try {
-						if (panel.scrollIntoView) panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-					} catch (e) {}
+				const tabId = this.dataset.tab;
+				if (tabId) {
+					switchToTab(tabId);
+					sidebarLinks.forEach(l => l.classList.remove('active'));
+					this.classList.add('active');
 				}
 			});
 		});
+
+		// Tab button clicks
+		document.querySelectorAll('.tab-btn').forEach(button => {
+			button.addEventListener('click', function() {
+				const tabId = this.getAttribute('data-tab');
+				switchToTab(tabId);
+				// Update sidebar active
+				sidebarLinks.forEach(l => l.classList.remove('active'));
+				const correspondingLink = document.querySelector(`.dashboard-link[data-tab="${tabId}"]`);
+				if (correspondingLink) correspondingLink.classList.add('active');
+			});
+		});
+
+		// Accordion header click
+		document.querySelectorAll('.accordion-header').forEach(header => {
+			header.addEventListener('click', function() {
+				const item = this.parentElement;
+				const target = item.dataset.target;
+				// Update sidebar active link
+				sidebarLinks.forEach(l => l.classList.remove('active'));
+				const correspondingLink = document.querySelector(`.dashboard-link[data-target="${target}"]`);
+				if (correspondingLink) correspondingLink.classList.add('active');
+				// toggle
+				toggleAccordion(target);
+			});
+		});
+
+		// Dashboard data rendering helpers
+		function renderOrdersFor(user) {
+			const ordersList = document.querySelector('.orders-list');
+			if (!ordersList) return;
+			if (!ordersList) return;
+			ordersList.innerHTML = '';
+			const orders = user.orders && user.orders.length ? user.orders : [];
+			if (!orders.length) {
+				ordersList.innerHTML = '<p>You have no orders yet. Your orders will appear here once you place them.</p>';
+				return;
+			}
+
+			// Build an orders table
+			const table = document.createElement('table');
+			table.className = 'orders-table';
+			table.innerHTML = `
+				<thead>
+					<tr>
+						<th>Order</th>
+						<th>Date</th>
+						<th>Status</th>
+						<th>Total</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody></tbody>
+			`;
+			const tbody = table.querySelector('tbody');
+
+			orders.forEach(o => {
+				const tr = document.createElement('tr');
+				const total = (parseFloat(o.total) || 0).toFixed(2);
+				tr.innerHTML = `
+					<td><a href="#" class="order-id-link">#${o.id}</a></td>
+					<td>${o.date || ''}</td>
+					<td><span class="status-badge ${String(o.status || '').toLowerCase()}">${o.status || 'Pending'}</span></td>
+					<td>$${total} for ${o.items || 1} item(s)</td>
+					<td><button class="order-view-btn order-view-btn-js" data-order-id="${o.id}">View</button></td>
+				`;
+				tbody.appendChild(tr);
+			});
+
+			ordersList.appendChild(table);
+
+			// Wire view buttons
+			ordersList.querySelectorAll('.order-view-btn-js').forEach(btn => {
+				btn.addEventListener('click', function() {
+					const id = this.dataset.orderId;
+					const order = orders.find(x => String(x.id) === String(id));
+					openOrderModal(id, order || null);
+				});
+			});
+
+			// attach view details handlers
+			ordersList.querySelectorAll('.view-order').forEach(btn => {
+				btn.addEventListener('click', function() {
+					const id = this.dataset.orderId;
+					openOrderModal(id, orders.find(x => x.id === id) || null);
+				});
+			});
+		}
+
+		function renderAddressesFor(user) {
+			const list = document.querySelector('.addresses-list');
+			if (!list) return;
+			list.innerHTML = '';
+			const addresses = user.addresses || [];
+			if (!addresses.length) {
+				list.innerHTML = '<p>No saved addresses yet.</p>';
+				return;
+			}
+			addresses.forEach((a, idx) => {
+				const card = document.createElement('div');
+				card.className = 'address-card';
+				card.innerHTML = `
+					<p><strong>${a.label || 'Address ' + (idx+1)}</strong></p>
+					<p>${a.line1}</p>
+					<p>${a.city}, ${a.postcode}</p>
+					<p>Phone: ${a.phone || ''}</p>
+					<div class="address-actions">
+						<button class="btn-secondary edit-address" data-index="${idx}">Edit</button>
+						<button class="btn-secondary remove-address" data-index="${idx}">Remove</button>
+					</div>
+				`;
+				list.appendChild(card);
+			});
+
+			list.querySelectorAll('.remove-address').forEach(btn => {
+				btn.addEventListener('click', function() {
+					const i = parseInt(this.dataset.index, 10);
+					const users = getSavedUsers();
+					const cur = getCurrentUser();
+					if (!cur) return;
+					const u = users[cur.email] || cur;
+					u.addresses = (u.addresses || []).filter((_, idx) => idx !== i);
+					users[cur.email] = u;
+					saveUsers(users);
+					showNotification('Address removed');
+					renderAddressesFor(u);
+				});
+			});
+		}
+
+		function openOrderModal(id, order) {
+			// create or update modal element
+			let modal = document.getElementById('orderModal');
+			if (!modal) {
+				modal = document.createElement('div');
+				modal.id = 'orderModal';
+				modal.className = 'order-modal';
+				modal.innerHTML = `
+					<div class="order-modal-content">
+						<button class="order-modal-close">×</button>
+						<div class="order-modal-body"></div>
+					</div>
+				`;
+				document.body.appendChild(modal);
+				modal.querySelector('.order-modal-close').addEventListener('click', () => modal.remove());
+			}
+			const body = modal.querySelector('.order-modal-body');
+			if (!order) body.innerHTML = `<p>Order ${id} details not found.</p>`;
+			else body.innerHTML = `
+				<h3>Order #${order.id}</h3>
+				<p>Date: ${order.date}</p>
+				<p>Items: ${order.items}</p>
+				<p>Total: $${order.total.toFixed(2)}</p>
+				<p>Status: ${order.status}</p>
+			`;
+			// show modal
+			modal.style.display = 'flex';
+		}
+
+		// Address addition is handled via modal/delegated handlers (ensureAddressModal + delegated clicks)
+
+		// Account details save handled later (single, consolidated handler below)
+
+		// Render initial panels for current user
+		const curUser = getCurrentUser();
+		if (curUser) {
+			renderOrdersFor(curUser);
+			renderAddressesFor(curUser);
+			// prefill account details
+			const users = getSavedUsers();
+			const u = users[curUser.email] || curUser;
+			if (document.getElementById('accountName')) document.getElementById('accountName').value = u.name || '';
+			if (document.getElementById('accountEmail')) document.getElementById('accountEmail').value = u.email || '';
+			if (document.getElementById('sidebarUserName')) document.getElementById('sidebarUserName').textContent = u.name || '';
+		}
 
 		// Fill sidebar user name and payment placeholders
 		const sidebarUserName = document.getElementById('sidebarUserName');
@@ -481,19 +558,39 @@ document.addEventListener('DOMContentLoaded', function() {
 			}
 			accountDetailsForm.addEventListener('submit', async function(ev) {
 				ev.preventDefault();
-				const users = getSavedUsers();
 				const cur = getCurrentUser();
 				if (!cur) { showNotification('Not signed in', 'error'); return; }
 				const newName = accountName.value.trim();
 				const newPassword = document.getElementById('accountPassword').value;
-				// update local users store
-				if (users[cur.email]) {
-					users[cur.email].name = newName || users[cur.email].name;
+				const token = localStorage.getItem(AUTH_TOKEN_KEY);
+				try {
+					// Update profile
+					const updateData = { name: newName };
 					if (newPassword) {
-						const pwHash = await hashPassword(newPassword);
-						users[cur.email].passwordHash = pwHash;
+						await fetch(`${API_BASE}/profile/password`, {
+							method: 'PUT',
+							headers: {
+								'Content-Type': 'application/json',
+								'Authorization': `Bearer ${token}`
+							},
+							body: JSON.stringify({ currentPassword: '', newPassword }) // Assuming no current password check for simplicity
+						});
 					}
-					saveUsers(users);
+					const response = await fetch(`${API_BASE}/profile/profile`, {
+						method: 'PUT',
+						headers: {
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${token}`
+						},
+						body: JSON.stringify(updateData)
+					});
+					if (!response.ok) throw new Error('Update failed');
+					const updatedUser = await response.json();
+					localStorage.setItem(AUTH_USER_KEY, JSON.stringify(updatedUser));
+					// Update UI
+					if (userNameDisplay) userNameDisplay.textContent = `Welcome, ${updatedUser.name}!`;
+					if (userEmailDisplay) userEmailDisplay.textContent = updatedUser.email;
+					if (sidebarUserName) sidebarUserName.textContent = updatedUser.name;
 					// give immediate feedback on the Save button
 					const saveBtn = accountDetailsForm.querySelector('.btn-primary');
 					if (saveBtn) {
@@ -502,11 +599,9 @@ document.addEventListener('DOMContentLoaded', function() {
 						saveBtn.disabled = true;
 						setTimeout(() => { saveBtn.textContent = origText; saveBtn.disabled = false; }, 1400);
 					}
-					showNotification('Account updated');
-					// refresh current display
-					const updated = users[cur.email];
-					if (sidebarUserName) sidebarUserName.textContent = updated.name || updated.email;
-					if (userNameDisplay) userNameDisplay.textContent = updated.name || 'User';
+					showNotification('Account details updated');
+				} catch (error) {
+					showNotification('Error updating account', 'error');
 				}
 			});
 		}
@@ -934,7 +1029,7 @@ function initQuickView() {
 // --- Account: Address modal + rendering (improve from prompt-based flows) ---
 // Renders the addresses panel using the logged-in user's stored addresses
 function renderAddressesPanel() {
-	const panel = document.getElementById('dashboardAddresses');
+	const panel = document.getElementById('addresses');
 	if (!panel) return;
 	const list = panel.querySelector('.addresses-list');
 	if (!list) return;
